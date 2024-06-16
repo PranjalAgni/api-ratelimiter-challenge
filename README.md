@@ -2,8 +2,9 @@
 
 Challenge from https://codingchallenges.fyi/
 
-This challenge is to build your own API rate limiter.
+This challenge is to build your own API rate limiter. 
 
+Start adding the algorithms directory
 Rate limiters are a key part of building an API or large scale distributed system, they help when we wish to throttle traffic based on the user. They allow you to ensure that one or more bad actors can’t accidentally or deliberately overload the service.
 
 A rate limiting strategy can make your API more reliable, when:
