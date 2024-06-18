@@ -31,6 +31,20 @@ A rate limiting strategy can make your API more reliable, when:
 
 2. Leaky bucket (as a meter) - This is equivalent to the token bucket, but implemented in a different way - a mirror image.
 
+      ```
+      This is a traffic shaping algorithm, it shapes the bursty network to a smooth one
+
+      Analogy time!!!
+      Imagine we have a bucket with a hole in it, we pour water into it at random
+      intervals. Water is going to leak at a constant rate from the bucket. 
+      If you think clearly it is shaping the water flow no matter how much burstly
+      you add water to it in random intervals but, it will outflow at a constant rate only
+
+      So in leaky bucket algorithm, we add requests to the queue which is leaking at a defined
+      leak rate. 
+      If the queue becomes full we reject the request else we add the request to queue and process it
+      ```
+
 3. Leaky bucket (as a queue) - The bucket behaves like a FIFO queue with a limited capacity, if there is space in the bucket the request is accepted.
 
 4. Fixed window counter - record the number of requests from a sender occurring in the rate limit’s fixed time interval, if it exceeds the limit the request is rejected.
