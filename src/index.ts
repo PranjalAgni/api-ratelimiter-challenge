@@ -1,7 +1,8 @@
 import express from "express";
 import cors from "cors";
 import morgan from "morgan";
-import { rateLimiter } from "./middleware/rateLimiter";
+import { tokenBucketMiddleware } from "./middleware/tokenBucketMiddleware";
+import { leakyBucketMiddleware } from "./middleware/leakyBucketMiddleware";
 
 async function runServer() {
   const app = express();
@@ -23,7 +24,8 @@ async function runServer() {
     res.status(200).send("Unlimited! Let's Go!");
   });
 
-  app.use(rateLimiter);
+  // app.use(tokenBucketMiddleware);
+  app.use(leakyBucketMiddleware);
 
   app.get("/limited", (req, res) => {
     res.status(200).send("Limited, don't over use me!");
