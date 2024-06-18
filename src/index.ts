@@ -1,6 +1,7 @@
 import express from "express";
 import cors from "cors";
 import morgan from "morgan";
+import { rateLimiter } from "./middleware/rateLimiter";
 
 async function runServer() {
   const app = express();
@@ -21,6 +22,8 @@ async function runServer() {
   app.get("/unlimited", (req, res) => {
     res.status(200).send("Unlimited! Let's Go!");
   });
+
+  app.use(rateLimiter);
 
   app.get("/limited", (req, res) => {
     res.status(200).send("Limited, don't over use me!");

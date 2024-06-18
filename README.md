@@ -19,6 +19,15 @@ A rate limiting strategy can make your API more reliable, when:
 ## Algorithms for rate limiting
 
 1. Token bucket - tokens are added to a ‘bucket’ at a fixed rate. The bucket has a fixed capacity. When a request is made it will only be accepted if there are enough tokens in the bucket. Tokens are removed from the bucket when a request is accepted.
+      ```
+      In this algorithm there is a bucket 🪣 with a defined capacity, in which we can add tokens. 
+      
+      Idea is request is processed only if tokens are available in the bucket, if the bucket is empty request is rejected
+
+      Whenever we process a request, we consume a token from the bucket and it is therefore removed from the bucket. 
+
+      There is a refill rate for the bucket after every seconds x tokens are added to the bucket. Suppose 1 token is added every 5 seconds that means the refill rate is 0.2/seconds (0.2 tokens every 1 second)
+      ```
 
 2. Leaky bucket (as a meter) - This is equivalent to the token bucket, but implemented in a different way - a mirror image.
 
